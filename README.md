@@ -8,6 +8,26 @@
   <a href="https://github.com/calendso/calendso-docker/issues">Community Support</a>
 </div>
 
+# Building and pushing the QED image
+
+GCR auth:
+```
+gcloud auth login
+gcloud auth configure-docker
+```
+
+Test:
+```
+docker build -t eu.gcr.io/<registry-project>/calendso-test:v1.1-qed-11 --build-arg BASE_URL="https://<HOST>" --build-arg NEXT_PUBLIC_APP_URL="https://<HOST" --build-arg NEXT_PUBLIC_LICENSE_CONSENT=agree .
+docker push eu.gcr.io/<registry-project>/calendso-test:v1.1-qed-11
+```
+
+Prod:
+```
+docker build -t eu.gcr.io/<registry-project>/calendso-prod:v1.1-qed-11 --build-arg BASE_URL="https://<HOST" --build-arg NEXT_PUBLIC_APP_URL="https://<HOST" --build-arg NEXT_PUBLIC_LICENSE_CONSENT=agree .
+docker push eu.gcr.io/<registry-project>/calendso-prod:v1.1-qed-11
+```
+
 # Docker
 
 This image can be found on DockerHub at [https://hub.docker.com/repository/docker/calendso/calendso](https://hub.docker.com/repository/docker/calendso/calendso)
