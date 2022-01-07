@@ -21,6 +21,10 @@ COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
 FROM node:14 as runner
+
+RUN apt-get update && apt-get install -y \
+    netcat
+
 WORKDIR /app
 ENV NODE_ENV production
 
